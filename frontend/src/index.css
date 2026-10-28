@@ -1,0 +1,257 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+  /* Electric sunset brand: every indigo-* utility is remapped to the
+     fuchsia scale so the whole UI shifts from cool indigo to vibrant
+     magenta while preserving hover/dark states and contrast steps. */
+  --color-indigo-50: #fdf4ff;
+  --color-indigo-100: #fae8ff;
+  --color-indigo-200: #f5d0fe;
+  --color-indigo-300: #f0abfc;
+  --color-indigo-400: #e879f9;
+  --color-indigo-500: #d946ef;
+  --color-indigo-600: #c026d3;
+  --color-indigo-700: #a21caf;
+  --color-indigo-800: #86198f;
+  --color-indigo-900: #701a75;
+  --color-indigo-950: #4a044e;
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-delayed: floatDelayed 6s ease-in-out infinite;
+  --animate-pulse-slow: pulseSlow 10s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-fade-in: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(1deg);
+  }
+}
+
+@keyframes floatDelayed {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(12px) rotate(-1deg);
+  }
+}
+
+@keyframes pulseSlow {
+  0%, 100% {
+    opacity: 0.12;
+    transform: scale(1) translate(0px, 0px);
+  }
+  50% {
+    opacity: 0.22;
+    transform: scale(1.1) translate(10px, -15px);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  font-family: var(--font-sans);
+  background-color: #faf5ff;
+  background-image:
+    radial-gradient(55% 45% at 12% -5%, rgba(217, 70, 239, 0.10), transparent 60%),
+    radial-gradient(45% 40% at 105% 5%, rgba(245, 158, 11, 0.14), transparent 60%),
+    radial-gradient(65% 55% at 50% 110%, rgba(124, 58, 237, 0.10), transparent 60%);
+  background-attachment: fixed;
+  color: #0f172a;
+  overflow-x: hidden;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+/* ==========================================
+   CUSTOM PREMIUM SCROLLBAR
+   ========================================== */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #e879f9;
+  border-radius: 9999px;
+  border: 2px solid transparent;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #c026d3;
+}
+
+/* ==========================================
+   PREMIUM CUSTOM CLASSES
+   ========================================== */
+
+/* Glassmorphism card utility */
+.glass-card {
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(232, 121, 249, 0.18);
+  box-shadow: 0 8px 30px rgba(217, 70, 239, 0.10), 0 1px 3px rgba(15, 23, 42, 0.03);
+}
+
+.glass-card-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card-hover:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(245, 158, 11, 0.35);
+  box-shadow: 0 12px 40px rgba(245, 158, 11, 0.16), 0 2px 6px rgba(217, 70, 239, 0.08);
+}
+
+/* Premium micro-interactive button styling */
+.btn-premium {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-premium:active {
+  transform: scale(0.97);
+}
+
+/* Vibrant sunset gradient text */
+.text-gradient-sunset {
+  background-image: linear-gradient(115deg, #c026d3, #6d28d9 45%, #d97706 95%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* Lighter sunset gradient for use on dark backgrounds */
+.text-gradient-sunset-light {
+  background-image: linear-gradient(115deg, #f0abfc, #a78bfa 45%, #fbbf24 95%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* Vibrant sunset primary button */
+.btn-sunset {
+  background-image: linear-gradient(120deg, #a21caf, #6d28d9);
+  box-shadow: 0 10px 28px -8px rgba(217, 70, 239, 0.55);
+}
+
+.btn-sunset:hover {
+  background-image: linear-gradient(120deg, #a21caf, #7c3aed);
+  box-shadow: 0 12px 32px -8px rgba(245, 158, 11, 0.5);
+}
+
+.btn-sunset:active {
+  transform: scale(0.97);
+}
+
+.btn-sunset:focus-visible {
+  outline: 2px solid #f59e0b;
+  outline-offset: 2px;
+}
+
+/* Premium input focus styling */
+.input-premium {
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  background-color: #ffffff;
+}
+
+.input-premium:focus {
+  background-color: #ffffff;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+  transform: translateY(-0.5px);
+}
+
+/* Keyboard focus skip link (visually hidden until focused) */
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -100%;
+  z-index: 100;
+  border-radius: 0.75rem;
+  background-image: linear-gradient(120deg, #a21caf, #7c3aed);
+  padding: 0.75rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(217, 70, 239, 0.4);
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* ambient glowing backgrounds */
+.ambient-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ticket cutout effects */
+.ticket-stub {
+  position: relative;
+  background-image: radial-gradient(circle at 0px 50%, transparent 12px, white 12px),
+                    radial-gradient(circle at 100% 50%, transparent 12px, white 12px);
+  background-position: left, right;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+/* Honor the user's preference for reduced motion (WCAG 2.3.3) */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
